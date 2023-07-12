@@ -26,7 +26,7 @@ const TextArea = ({ placeholder, dataToConvert, setDataToConvert }: Props) => {
     <form ref={ref} className='w-full'>
       <textarea
         name='input'
-        className='py-2 px-3 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400'
+        className='py-2 px-3 block w-full border border-gray-200 rounded-lg text-sm focus:border-amber-500 focus:ring-amber-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400'
         rows={6}
         placeholder={placeholder}
         defaultValue={dataToConvert}
