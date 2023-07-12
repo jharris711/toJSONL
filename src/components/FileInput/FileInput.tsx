@@ -29,6 +29,7 @@ const FileInput = ({ setDataToConvert }: Props) => {
         <input
           type='file'
           name='file'
+          accept='.json'
           className='block w-full text-sm text-gray-500
       file:mr-4 file:py-2 file:px-4
       file:rounded-md file:border file:border-0
