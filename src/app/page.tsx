@@ -155,7 +155,7 @@ export default function Home() {
                           <CodeBlock
                             key={Math.random()}
                             language={(match && match[1]) || ''}
-                            value={String(children).replace(/\n$/, '')}
+                            value={String(children).replace(/\n$/, '').trim()}
                             {...props}
                           />
                         ) : (
