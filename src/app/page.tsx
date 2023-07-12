@@ -8,7 +8,7 @@ import FileInput from '@/components/FileInput';
 import MemoizedReactMarkdown from '@/components/MemoizedReactMarkdown';
 import Sidebar from '@/components/Sidebar';
 import TextArea from '@/components/TextArea';
-import Toast from '@/components/Toast';
+import ToastComponent from '@/components/Toast';
 
 interface Toast {
   type: string;
@@ -56,7 +56,7 @@ export default function Home() {
 
   return (
     <>
-      <Toast toast={toast} setToast={setToast} />
+      <ToastComponent toast={toast} setToast={setToast} />
       {/* <!-- Sidebar Toggle --> */}
       <div className='sticky top-0 inset-x-0 z-20 bg-white border-y px-4 sm:px-6 md:px-8 lg:hidden dark:bg-gray-800 dark:border-gray-700'>
         <div className='flex items-center py-4'>
