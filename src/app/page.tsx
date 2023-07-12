@@ -10,6 +10,8 @@ import Sidebar from '@/components/Sidebar';
 import TextArea from '@/components/TextArea';
 import ToastComponent from '@/components/Toast';
 
+const JSON_FUNCTION = process.env.NEXT_PUBLIC_JSON_FUNCTION as string;
+
 interface Toast {
   type: string;
   message: string;
@@ -34,12 +36,9 @@ export default function Home() {
     }
 
     try {
-      const { data, error } = await supabase.functions.invoke(
-        'jsonlConverter',
-        {
-          body: { data: JSON.parse(dataToConvert) },
-        }
-      );
+      const { data, error } = await supabase.functions.invoke(JSON_FUNCTION, {
+        body: { data: JSON.parse(dataToConvert) },
+      });
 
       if (error) {
         throw error;
