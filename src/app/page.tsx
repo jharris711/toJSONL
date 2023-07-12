@@ -8,29 +8,55 @@ import FileInput from '@/components/FileInput';
 import MemoizedReactMarkdown from '@/components/MemoizedReactMarkdown';
 import Sidebar from '@/components/Sidebar';
 import TextArea from '@/components/TextArea';
+import Toast from '@/components/Toast';
+
+interface Toast {
+  type: string;
+  message: string;
+}
 
 export default function Home() {
+  const [toast, setToast] = useState<Toast | null>(null);
   const [dataToConvert, setDataToConvert] = useState<string>('');
   const [convertedData, setConvertedData] = useState<string>('');
+  const [requestError, setRequestError] = useState<boolean>(false);
   const supabase = createClientComponentClient();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setRequestError(false);
+    setToast({ type: 'info', message: 'Converting...' });
 
-    const { data, error } = await supabase.functions.invoke('jsonlConverter', {
-      body: { data: JSON.parse(dataToConvert) },
-    });
-
-    if (error) {
-      console.error(error);
+    if (!dataToConvert) {
+      setRequestError(true);
+      setToast({ type: 'error', message: 'No data to convert' });
       return;
     }
 
-    setConvertedData(data.jsonl);
+    try {
+      const { data, error } = await supabase.functions.invoke(
+        'jsonlConverter',
+        {
+          body: { data: JSON.parse(dataToConvert) },
+        }
+      );
+
+      if (error) {
+        throw error;
+      }
+
+      setConvertedData(data.jsonl);
+      setToast({ type: 'success', message: 'Converted Successfully' });
+    } catch (err) {
+      const e = err as Error;
+      setRequestError(true);
+      setToast({ type: 'error', message: e.message });
+    }
   };
 
   return (
     <>
+      <Toast toast={toast} setToast={setToast} />
       {/* <!-- Sidebar Toggle --> */}
       <div className='sticky top-0 inset-x-0 z-20 bg-white border-y px-4 sm:px-6 md:px-8 lg:hidden dark:bg-gray-800 dark:border-gray-700'>
         <div className='flex items-center py-4'>
@@ -85,6 +111,7 @@ export default function Home() {
                 placeholder='Enter your json data here...'
                 dataToConvert={dataToConvert}
                 setDataToConvert={setDataToConvert}
+                requestError={requestError}
               />
               <button
                 type='button'

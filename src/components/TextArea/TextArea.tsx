@@ -4,10 +4,16 @@ import { useRef } from 'react';
 interface Props {
   placeholder: string;
   setDataToConvert: React.Dispatch<React.SetStateAction<string>>;
+  requestError: boolean;
   dataToConvert?: string;
 }
 
-const TextArea = ({ placeholder, dataToConvert, setDataToConvert }: Props) => {
+const TextArea = ({
+  placeholder,
+  dataToConvert,
+  requestError,
+  setDataToConvert,
+}: Props) => {
   const ref = useRef<HTMLFormElement>(null);
 
   const updateDataToConvert = (e: React.FormEvent) => {
@@ -20,13 +26,18 @@ const TextArea = ({ placeholder, dataToConvert, setDataToConvert }: Props) => {
     const data = input.get('input') as string;
 
     setDataToConvert(data.trim());
+    ref.current.reset();
   };
 
   return (
     <form ref={ref} className='w-full'>
       <textarea
         name='input'
-        className='py-2 px-3 block w-full border border-gray-200 rounded-lg text-sm focus:border-amber-500 focus:ring-amber-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400'
+        className={`py-2 px-3 block w-full border border-${
+          requestError ? 'red' : 'gray'
+        }-200 dark:border-${
+          requestError ? 'red' : 'gray'
+        }-700 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:text-gray-400`}
         rows={6}
         placeholder={placeholder}
         defaultValue={dataToConvert}
