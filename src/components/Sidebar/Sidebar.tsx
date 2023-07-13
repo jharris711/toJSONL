@@ -1,6 +1,5 @@
 'use client';
 import { useEffect } from 'react';
-import './kofi.css';
 
 const KOFI_LINK = process.env.NEXT_PUBLIC_KOFI_LINK as string;
 
