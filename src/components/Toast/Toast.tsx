@@ -29,7 +29,7 @@ const Toast = ({ toast, setToast }: Props) => {
   return (
     <>
       {toast ? (
-        <div className='animate-fade-down animate-ease-in-out fixed flex items-center w-full max-w-xs p-4 mb-4 rounded-lg shadow bottom-5 right-5'>
+        <div className='z-50 animate-fade-down animate-ease-in-out fixed flex items-center w-full max-w-xs p-4 mb-4 rounded-lg bottom-5 right-5'>
           <div
             className={`max-w-xs ${bg} text-sm text-white rounded-md shadow-lg`}
             role='alert'

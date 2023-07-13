@@ -1,5 +1,8 @@
 'use client';
 import { useEffect } from 'react';
+import './kofi.css';
+
+const KOFI_LINK = process.env.NEXT_PUBLIC_KOFI_LINK as string;
 
 const Sidebar = () => {
   useEffect(() => {
@@ -28,7 +31,7 @@ const Sidebar = () => {
         <ul className='space-y-1.5'>
           <li>
             <a
-              className='flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-gray-900 dark:text-white'
+              className='flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-amber-500  hover:text-white dark:bg-gray-900 dark:text-white'
               href='/'
             >
               <svg
@@ -50,6 +53,18 @@ const Sidebar = () => {
               </svg>
               JSON to JSONL
             </a>
+          </li>
+          <li className='absolute bottom-5'>
+            <div className='flex items-center gap-x-3.5 py-2 px-2.5 dark:bg-gray-800 text-sm'>
+              <a href={KOFI_LINK} target='_blank'>
+                <img
+                  height='36'
+                  style={{ border: '0px', height: '36px' }}
+                  src='https://storage.ko-fi.com/cdn/kofi1.png?v=3'
+                  alt='Buy Me a Coffee at ko-fi.com'
+                />
+              </a>
+            </div>
           </li>
         </ul>
       </nav>
