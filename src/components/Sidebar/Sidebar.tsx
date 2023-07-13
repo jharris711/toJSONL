@@ -1,5 +1,6 @@
 'use client';
 import { useEffect } from 'react';
+import Footer from '../Footer';
 
 const KOFI_LINK = process.env.NEXT_PUBLIC_KOFI_LINK as string;
 
@@ -24,7 +25,7 @@ const Sidebar = () => {
       </div>
 
       <nav
-        className='hs-accordion-group p-6 w-full flex flex-col flex-wrap'
+        className='hs-accordion-group p-6 w-full flex flex-col flex-wrap justify-center'
         data-hs-accordion-always-open
       >
         <ul className='space-y-1.5'>
@@ -53,19 +54,10 @@ const Sidebar = () => {
               JSON to JSONL
             </a>
           </li>
-          <li className='absolute bottom-5'>
-            <div className='flex items-center gap-x-3.5 py-2 px-2.5 dark:bg-gray-800 text-sm'>
-              <a href={KOFI_LINK} target='_blank'>
-                <img
-                  height='36'
-                  style={{ border: '0px', height: '36px' }}
-                  src='https://storage.ko-fi.com/cdn/kofi1.png?v=3'
-                  alt='Buy Me a Coffee at ko-fi.com'
-                />
-              </a>
-            </div>
-          </li>
         </ul>
+        <div className='absolute bottom-0'>
+          <Footer />
+        </div>
       </nav>
     </div>
   );
