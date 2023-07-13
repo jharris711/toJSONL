@@ -50,7 +50,7 @@ const CodeBlock: FC<Props> = memo(({ language, value }) => {
   return (
     <div className='codeblock relative font-sans text-[16px] w-full'>
       <div className='flex items-center justify-between py-1.5 px-4'>
-        <span className='text-xs lowercase text-white'>{language}</span>
+        <span className='text-xs lowercase text-white'>jsonl</span>
 
         <div className='flex items-center'>
           <button

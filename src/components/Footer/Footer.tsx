@@ -6,7 +6,6 @@ const Footer = () => {
       <div className='flex gap-x-3.5 py-5 px-2.5 dark:bg-gray-800 text-sm justify-center'>
         <a href={KOFI_LINK} target='_blank'>
           <img
-            height='36'
             style={{ border: '0px', height: '36px' }}
             src='https://storage.ko-fi.com/cdn/kofi1.png?v=3'
             alt='Buy Me a Coffee at ko-fi.com'
